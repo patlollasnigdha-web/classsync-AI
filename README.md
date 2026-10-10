@@ -179,8 +179,6 @@ Facial data is sensitive biometric information. A production deployment should u
 
 ## 📚 References
 
-## 📚 References
-
 1. **ArcFace: Additive Angular Margin Loss for Deep Face Recognition**
    Authors: Jiankang Deng et al.
    CVPR, 2019.

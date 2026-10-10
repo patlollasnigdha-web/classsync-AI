@@ -1,0 +1,81 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create dataset
+data = {
+    "hours": [1, 2, 3, 4, 5],
+    "marks": [45, 50, 55, 60, 65]
+}
+
+df = pd.DataFrame(data)
+
+# Independent (X) and Dependent (Y) variables
+x = df["hours"]
+y = df["marks"]
+
+# Mean values
+mean_x = x.mean()
+mean_y = y.mean()
+
+print("Mean of X =", mean_x)
+print("Mean of Y =", mean_y)
+
+# Deviations
+dx = x - mean_x
+dy = y - mean_y
+
+# Calculations
+product = dx * dy
+square = dx ** 2
+
+# Display table
+table = pd.DataFrame({
+    "X": x,
+    "Y": y,
+    "X-Mean(X)": dx,
+    "Y-Mean(Y)": dy,
+    "(X-MeanX)*(Y-MeanY)": product,
+    "(X-MeanX)^2": square
+})
+
+print("\nDeviation Table")
+print(table)
+
+# Slope and Intercept
+m = product.sum() / square.sum()
+b = mean_y - m * mean_x
+
+print("\nSlope (m) =", m)
+print("Intercept (b) =", b)
+
+print("\nRegression Equation")
+print(f"y = {round(m,2)} * x + {round(b,2)}")
+
+# Predicted values
+predicted = []
+
+for value in x:
+    predicted.append(m * value + b)
+
+print("\nPredicted Values")
+for i in range(len(x)):
+    print(f"x = {x[i]}, Predicted y = {predicted[i]}")
+
+# Test case
+test_hours = 6
+predicted_marks = m * test_hours + b
+
+print("\nTest Case")
+print("Study Hours =", test_hours)
+print("Predicted Marks =", predicted_marks)
+
+# Plot
+plt.scatter(x, y, color="blue", label="Actual Data")
+plt.plot(x, predicted, color="red", linewidth=2, label="Regression Line")
+
+plt.xlabel("Hours Studied")
+plt.ylabel("Exam Marks")
+plt.title("Simple Linear Regression")
+plt.legend()
+plt.grid(True)
+plt.show()

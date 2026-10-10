@@ -1,0 +1,3 @@
+Faculty_ID,Subject,Room,Day,Start_Time,End_Time,Section
+F001,Machine Learning,Room-101,Saturday,22:00,23:00,CSE-A
+F002,DBMS,Room-102,Saturday,23:00,23:59,CSE-A
